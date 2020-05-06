@@ -1,3 +1,5 @@
+import 'package:flutter/cupertino.dart';
+
 import '../services/location.dart';
 import '../services/networking.dart';
 
@@ -14,6 +16,14 @@ class WeatherModel {
 
     var weatherData = await networkHelper.getData();
 
+    return weatherData;
+  }
+
+  Future<dynamic> getCityWeather(String cityName) async {
+    var url = '$openWeatherMapURL?q=$cityName&appid=$apiKey&units=metric';
+    NetworkHelper networkHelper = NetworkHelper(url);
+
+    var weatherData = await networkHelper.getData();
     return weatherData;
   }
 
